@@ -108,3 +108,57 @@ while True:
           pole[i].append(9)
         else:
           pole[i].append(1)
+          
+          #расстаение мин
+  xminy = 0
+ 
+  while xminy < miny:
+    xminy_y = random.randint(1 , size_pole[1])
+    xminy_x = random.randint(1 , size_pole[0])
+    if pole[xminy_y][xminy_x] != 2:
+      pole[xminy_y][xminy_x] = 2
+      xminy += 1
+  
+  probely_y_str = '     '
+  verh_str = ''
+  niz_str = ''
+  for i in range(1 , size_pole[0] + 1):
+    verh_str += chr(i + 64) + ' '
+    niz_str += chr(i + 64) + ' '
+    probely_y_str += '  '
+  verh_str = '  x ' + verh_str + 'x\ny' + probely_y_str + 'y\n'
+  niz_str = 'y' + probely_y_str + 'y\n  x ' + niz_str + 'x\n'
+
+
+
+  while True:
+    win = 0
+    #вывод поля на экран
+    print('Количество мин:' , miny)
+    image_pole = verh_str
+    for i in range(1 , size_pole[1] + 1): #строка
+      image_pole += chr(i + 64) + '  '
+      for r in range(1 , size_pole[0] + 1): #символ
+        if pole[i][r] == 1 or pole[i][r] == 2:
+          image_pole += "|■"
+        else:
+          win += 1
+          stroka_p = poisk(i , r)
+          if stroka_p == 0:
+            image_pole += "| "
+          else:
+            image_pole += "|" + str(stroka_p)
+      image_pole += "|  " + chr(i + 64) + '\n'
+    image_pole += niz_str
+
+    if win == size_pole[0] * size_pole[1] - miny: #победа 
+      itog = 2
+      cls()
+      break
+      
+    print(image_pole)
+    
+    xy = input('Введите xy:\n')
+    if len(xy) != 2:
+      cls()
+      continue
