@@ -226,3 +226,28 @@ while True:
     print('!!!\nВЫ ПРОИГРАЛИ\n!!!')
     input()
     cls()
+    
+     if itog == 2:
+
+    print('Количество мин:' , miny)
+    image_pole = verh_str
+    for i in range(1 , size_pole[1] + 1): #строка
+      image_pole += chr(i + 64) + '  '
+      for r in range(1 , size_pole[0] + 1): #символ
+        if pole[i][r] == 1:
+          image_pole += "|■"
+        elif pole[i][r] == 2:
+          image_pole += "|ʘ"
+        else:
+          stroka_p = poisk(i , r)
+          if stroka_p == 0:
+            image_pole += "| "
+          else:
+            image_pole += "|" + str(stroka_p)
+      image_pole += "|  " + chr(i + 64) + '\n'
+    image_pole += niz_str
+
+    print(image_pole)
+    print('!!!\nПОЗДРАВЛЯЮ, ВЫ ВЫИГРАЛИ :)\n!!!')
+    input()
+    cls()
