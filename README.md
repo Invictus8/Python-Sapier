@@ -1,2 +1,2 @@
 # Python-Sapier
-Practiсe on Python
+Practiсe Python
